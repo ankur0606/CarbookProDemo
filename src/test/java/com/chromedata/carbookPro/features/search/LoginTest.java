@@ -28,6 +28,7 @@ public class LoginTest {
 		System.out.println("############### " + CbpParameters.getBrands() + "#######"
 				+ CbpParameters.getCbpEnvironment() + CbpParameters.getUserAccounts() + "####");
 	}
+	
 
 	@Test
 	public void verifyUserLoginWithInvalidCredential() {

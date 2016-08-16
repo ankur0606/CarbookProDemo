@@ -1,24 +1,23 @@
 package com.chromedata.carbookPro.steps.serenity;
 
+import com.chromedata.carbookPro.pages.DashboardPage;
 import com.chromedata.carbookPro.pages.LoginPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class UserLoginSteps extends ScenarioSteps {
+public class UserDashboardSteps extends ScenarioSteps {
 
-	LoginPage loginPage;
+	DashboardPage dashboardPage;
 
 	@Step
 	public void loginToCBP(String userName, String password) {
-		loginPage.enterUserName(userName);
-		loginPage.enterPassword(password);
-		loginPage.clickLoginButtonAndOpenDashboard();
+		
 	}
 
 	@Step
 	public void openCBP() {
-		loginPage.openLoginPage();
+		//loginPage.open();
 	}
 
 }
