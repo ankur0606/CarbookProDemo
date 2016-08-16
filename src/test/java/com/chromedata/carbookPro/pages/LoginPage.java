@@ -5,7 +5,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 
-@DefaultUrl("http://carbookpro.autodatacorp.org/dashboard/brands/chrome/login.jsp")
+@DefaultUrl("login.jsp")
 public class LoginPage extends PageObject {
 
 	@FindBy(name = "username")
