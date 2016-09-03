@@ -40,7 +40,7 @@ public class ComparisonValidationWorkflowUsTest {
 	@Test
 	public void ComparisonValidationWorkflowUsTest() {
 		loginStep.openCBP();
-		loginStep.loginToCBP("ankur_jain@newgen.co.in", "password");
+		loginStep.loginToCBP("stephanie.alfred@chromedata.com", "password");
 
 		dashboardSteps.setImplicitTimeout(30, TimeUnit.SECONDS);
 
