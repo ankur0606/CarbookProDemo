@@ -6,7 +6,6 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 
-
 public class LoginPage extends PageObject {
 
 	@FindBy(name = "username")
@@ -30,10 +29,8 @@ public class LoginPage extends PageObject {
 		loginButton.click();
 		return new DashboardPage();
 	}
-	
-	
-	
-	public void openLoginPage(){
+
+	public void openLoginPage() {
 		String url = System.getProperty("webdriver.base.url") + CbpParameters.getBrands() + "/login.jsp";
 		this.getDriver().get(url);
 	}
