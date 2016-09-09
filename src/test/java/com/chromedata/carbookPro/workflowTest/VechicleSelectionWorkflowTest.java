@@ -50,7 +50,7 @@ public class VechicleSelectionWorkflowTest {
 		this.model = model;
 	}
 
-	@Test @Ignore
+	@Test
 
 	public void verifyVechicleSelectionWorkflow() {
 		loginStep.openCBP();
