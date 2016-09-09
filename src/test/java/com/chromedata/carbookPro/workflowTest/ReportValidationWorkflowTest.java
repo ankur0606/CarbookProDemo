@@ -30,20 +30,21 @@ public class ReportValidationWorkflowTest {
 	@Test
 	public void verifyReportValidationWorkflow() {
 		loginStep.openCBP();
-		loginStep.loginToCBP("stephanie.alfred@chromedata.com", "password");
+		loginStep.loginToCBP("ankur_jain@newgen.co.in", "password");
 
 		dashboardSteps.setImplicitTimeout(30, TimeUnit.SECONDS);
 		dashboardSteps.clickOnBuildAVehicle();
 		// mode selection logic
 		String brandName = CbpParameters.getBrands();
 		if (brandName.equalsIgnoreCase("/dashboard/brands/chrome-ca")
-				|| brandName.equalsIgnoreCase("/dashboard/brands/isuzu-ca"));
+				|| brandName.equalsIgnoreCase("/dashboard/brands/isuzu-ca") || brandName.equalsIgnoreCase("/dashboard/brands/isuzu"))
+			;
 		else
 			dashboardSteps.selectMode("Retail");
 
-		dashboardSteps.selectModelYear("2017");
-		dashboardSteps.selectMakeforGmModel("GMC Pickups");
-		dashboardSteps.selectGmModel("Sierra 1500");
+		dashboardSteps.selectModelYear("2016");
+		dashboardSteps.selectMakeforGmModel("Chevy Cars");
+		dashboardSteps.selectGmModel("Corvette");
 		dashboardSteps.enablePegCheckBox();
 		dashboardSteps.selectStyleFromList();
 		dashboardSteps.selectPEG();
@@ -51,6 +52,7 @@ public class ReportValidationWorkflowTest {
 		dashboardSteps.editContactInfo();
 		dashboardSteps.enterContactDetails();
 		dashboardSteps.clickSave();
+		dashboardSteps.selectPriceSummary();
 		dashboardSteps.removeAllPageBreak();
 		dashboardSteps.addOnePageBreak();
 		dashboardSteps.removeOnePageBreak();

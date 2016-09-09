@@ -23,7 +23,7 @@ public class DashboardPage extends PageObject {
 	@FindBy(css = "select[class='gwt-ListBox component-selector-mode-input']")
 	private WebElementFacade modeElement;
 
-	@FindBy(xpath = "html/body/table/tbody/tr[1]/td/table/tbody/tr/td[4]/table/tbody/tr/td[1]/div/table/tbody/tr/td[1]/img")
+	@FindBy(xpath = "//*[contains(text(), 'Build Vehicle')]")
 	private WebElementFacade buildVehicleButton;
 
 	@FindBy(css = "select[class='gwt-ListBox component-selector-year-input']")
@@ -46,6 +46,9 @@ public class DashboardPage extends PageObject {
 
 	@FindBy(xpath = "//*[contains(text(), 'Standard Equipment')]")
 	private WebElementFacade selectStandardEquipment;
+
+	@FindBy(xpath = "//*[contains(text(), 'Tech Specs')]")
+	private WebElementFacade techSpecsSelect;
 
 	@FindBy(xpath = "//*[contains(text(), 'Reports')]")
 	private WebElementFacade selectReports;
@@ -119,6 +122,9 @@ public class DashboardPage extends PageObject {
 	@FindBy(css = "img[src='common/image/icons/icon_pencil_edit_disabled.gif']")
 	private WebElementFacade vehicleSelectFromList;
 
+	@FindBy(css = "div[class='button button-up']")
+	private WebElementFacade vehicleDeleteConfirm;
+
 	@FindBy(css = "img[src='managevehiclelist/images/delete_vehicle_off.jpg']")
 	private WebElementFacade vehicleDelete;
 
@@ -128,11 +134,23 @@ public class DashboardPage extends PageObject {
 	@FindBy(css = "div[class='addNewVehicle']")
 	private WebElementFacade newVehicleAdd;
 
-	@FindBy(css = "div[class='addNewVehicle Hover']")
-	private WebElementFacade newVehicleHoverAdd;
+	@FindBy(xpath = "//tbody/tr/td[3]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td[2]")
+	private WebElementFacade newVehicleAddFromSaved;
 
 	@FindBy(css = "div[class='addSavedVehicle']")
 	private WebElementFacade newVehicleSaved;
+
+	@FindBy(css = "div[id='select-saved-vehicle-button']")
+	private WebElementFacade vehicleSelectButton;
+
+	@FindBy(css = "select[class='standard-lst-category']")
+	private WebElementFacade categorySelectFromDropDown;
+
+	@FindBy(css = "img[src='common/image/icons/icon_pencil_edit.gif']")
+	private WebElementFacade pencilIconSelectForDefault;
+
+	@FindBy(css = "input[class='gwt-TextBox'][type='text']")
+	private WebElementFacade nameVehiclUsingPencilIcon;
 
 	private TimeUnit seconds;
 
@@ -560,14 +578,34 @@ public class DashboardPage extends PageObject {
 	public void deleteVehicleConfirm() {
 		// TODO Auto-generated method stub
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 
-			getDriver().findElement(By.cssSelector("manage-vehicle-decisionpanel-confirmation-align"))
-					.findElement(By.tagName("tr")).findElements(By.tagName("td")).get(0).findElement(By.tagName("div"))
-					.click();
+			// Mouse hover first
+			Actions action = new Actions(getDriver());
+			action.moveToElement(vehicleDeleteConfirm).build().perform();
+			vehicleDeleteConfirm.waitUntilClickable().click();
+
+			try {
+				Thread.sleep(4000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			vehicleDeleteConfirm.waitUntilClickable().click();
+
+			/*
+			 * getDriver().findElement(By.cssSelector(
+			 * "div[class='manage-vehicle-delete-msg']"))
+			 * .findElement(By.cssSelector(
+			 * "manage-vehicle-decisionpanel-confirmation-align"))
+			 * .findElement(By.tagName("tbody")).findElement(By.tagName("tr")).
+			 * findElements(By.tagName("td"))
+			 * .get(0).findElement(By.tagName("div")).findElement(By.
+			 * cssSelector("button button-up")).click();
+			 */
 
 		}
 
@@ -609,7 +647,7 @@ public class DashboardPage extends PageObject {
 		newVehicleSaved.waitUntilClickable().click();
 	}
 
-	public void addNewVehicleHover() {
+	public void addNewVehicleFromSaved() {
 		// TODO Auto-generated method stub
 		try {
 			Thread.sleep(2000);
@@ -618,7 +656,62 @@ public class DashboardPage extends PageObject {
 			e.printStackTrace();
 		}
 
-		newVehicleHoverAdd.waitUntilVisible().click();
+		newVehicleAddFromSaved.waitUntilVisible().click();
+	}
+
+	public void pressSelectButtonFromSaved() {
+		// TODO Auto-generated method stub
+		vehicleSelectButton.waitUntilClickable().click();
+	}
+
+	public void selectCategory(String category) {
+		// TODO Auto-generated method stub
+		categorySelectFromDropDown.selectByVisibleText(category);
+
+	}
+
+	public void verifyTechSpecs() {
+		// TODO Auto-generated method stub
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		techSpecsSelect.waitUntilClickable().click();
+
+	}
+
+	public void selectPencilIconForDefaultVehicle() {
+		// TODO Auto-generated method stub
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*
+		 * Actions Action = new Actions(getDriver());
+		 * Action.doubleClick(pencilIconSelectForDefault).build().perform();
+		 * pencilIconSelectForDefault.sendKeys("this is item name_" +
+		 * System.currentTimeMillis());
+		 */
+
+		// Mouse hover first
+		Actions action = new Actions(getDriver());
+		action.moveToElement(pencilIconSelectForDefault).build().perform();
+		pencilIconSelectForDefault.waitUntilClickable().click();
+	}
+
+	public void renameVehiclePencilIcon() {
+		// TODO Auto-generated method stub
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		nameVehiclUsingPencilIcon.sendKeys("Test Vehicle name_" + System.currentTimeMillis());
 	}
 
 }

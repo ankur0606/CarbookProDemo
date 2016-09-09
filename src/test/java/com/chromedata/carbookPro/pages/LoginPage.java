@@ -1,5 +1,10 @@
 package com.chromedata.carbookPro.pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import com.chromedata.carbookPro.utils.CbpParameters;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -17,6 +22,9 @@ public class LoginPage extends PageObject {
 	@FindBy(xpath = "//*[starts-with(text(), 'Log')]")
 	private WebElementFacade loginButton;
 
+	@FindBy(css = "input[class='btn-login']")
+	private WebElementFacade gmabloginButton;
+
 	public void enterUserName(String userName) {
 		typeInto(userNameTextBox, userName);
 	}
@@ -26,7 +34,14 @@ public class LoginPage extends PageObject {
 	}
 
 	public DashboardPage clickLoginButtonAndOpenDashboard() {
-		loginButton.click();
+		List<WebElement> loginTableList = getDriver().findElements(By.cssSelector("table[id='login-box-form']"));
+		if (loginTableList.size() != 0)
+			loginTableList.get(0).findElements(By.tagName("tr")).get(3).findElements(By.tagName("button")).get(0)
+					.click();
+		else
+			gmabloginButton.click();
+
+		// loginButton.click();
 		return new DashboardPage();
 	}
 

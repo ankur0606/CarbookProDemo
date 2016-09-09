@@ -2,6 +2,7 @@ package com.chromedata.carbookPro.workflowTest;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -29,14 +30,14 @@ public class QWSValidationWorkflowTest {
 	@Test
 	public void QWSValidationWorkflowTest() {
 		loginStep.openCBP();
-		loginStep.loginToCBP("stephanie.alfred@chromedata.com", "password");
+		loginStep.loginToCBP("ankur_jain@newgen.co.in", "password");
 
 		dashboardSteps.setImplicitTimeout(30, TimeUnit.SECONDS);
 		dashboardSteps.clickOnBuildAVehicle();
 		// mode selection logic
 		String brandName = CbpParameters.getBrands();
 		if (brandName.equalsIgnoreCase("/dashboard/brands/chrome-ca")
-				|| brandName.equalsIgnoreCase("/dashboard/brands/isuzu-ca"))
+				|| brandName.equalsIgnoreCase("/dashboard/brands/isuzu-ca") || brandName.equalsIgnoreCase("/dashboard/brands/isuzu"))
 			;
 		else
 			dashboardSteps.selectMode("Fleet");

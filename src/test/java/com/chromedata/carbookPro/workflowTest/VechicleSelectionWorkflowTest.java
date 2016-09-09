@@ -50,18 +50,18 @@ public class VechicleSelectionWorkflowTest {
 		this.model = model;
 	}
 
-	@Test
+	@Test @Ignore
 
 	public void verifyVechicleSelectionWorkflow() {
 		loginStep.openCBP();
-		loginStep.loginToCBP("stephanie.alfred@chromedata.com", "password");
+		loginStep.loginToCBP("ankur_jain@newgen.co.in", "password");
 
 		dashboardSteps.setImplicitTimeout(30, TimeUnit.SECONDS);
 		dashboardSteps.clickOnBuildAVehicle();
 
 		String brandName = CbpParameters.getBrands();
 		if (brandName.equalsIgnoreCase("/dashboard/brands/chrome-ca")
-				|| brandName.equalsIgnoreCase("/dashboard/brands/isuzu-ca"))
+				|| brandName.equalsIgnoreCase("/dashboard/brands/isuzu-ca") || brandName.equalsIgnoreCase("/dashboard/brands/isuzu"))
 			;
 		else
 			dashboardSteps.selectMode(mode);
@@ -72,7 +72,18 @@ public class VechicleSelectionWorkflowTest {
 		dashboardSteps.enablePegCheckBox();
 		dashboardSteps.selectStyleFromList();
 		dashboardSteps.selectPEG();
+		dashboardSteps.openManageVehicleListTab();
+		dashboardSteps.verifyQuoteWorksheetTab();
+		dashboardSteps.verifyReportsTab();
 		dashboardSteps.verifyStandardEquipmentTab();
+		dashboardSteps.selectCategory("interior");
+		dashboardSteps.selectCategory("safety-interior");
+		dashboardSteps.selectCategory("exterior");
+		dashboardSteps.selectCategory("safety-mechanical");
+		dashboardSteps.selectCategory("mechanical");
+		dashboardSteps.selectCategory("Warranty");
+		dashboardSteps.selectCategory("entertainment");
+		dashboardSteps.verifyTechSpecs();
 
 	}
 

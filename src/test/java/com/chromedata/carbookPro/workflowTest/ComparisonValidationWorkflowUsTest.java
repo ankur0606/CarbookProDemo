@@ -37,10 +37,10 @@ public class ComparisonValidationWorkflowUsTest {
 		Assume.assumeTrue(condition);
 	}
 
-	@Test
+	@Test @Ignore
 	public void ComparisonValidationWorkflowUsTest() {
 		loginStep.openCBP();
-		loginStep.loginToCBP("stephanie.alfred@chromedata.com", "password");
+		loginStep.loginToCBP("ankur_jain@newgen.co.in", "password");
 
 		dashboardSteps.setImplicitTimeout(30, TimeUnit.SECONDS);
 
@@ -57,6 +57,8 @@ public class ComparisonValidationWorkflowUsTest {
 
 		// Selecting Vehicle TWO
 		dashboardSteps.addSavedVehicle();
+		dashboardSteps.addNewVehicleFromSaved();
+		dashboardSteps.pressSelectButtonFromSaved();
 
 		// Selecting Vehicle THREE
 		dashboardSteps.addNewVehicle();
@@ -70,6 +72,7 @@ public class ComparisonValidationWorkflowUsTest {
 
 		// Selecting Vehicle FOUR
 		dashboardSteps.addSavedVehicle();
+		dashboardSteps.addNewVehicleFromSaved();
 
 		// Selecting Vehicle FIVE
 		dashboardSteps.addNewVehicle();

@@ -270,9 +270,39 @@ public class UserDashboardSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void addNewVehicleHover() {
+	public void addNewVehicleFromSaved() {
 		// TODO Auto-generated method stub
-dashboardPage.addNewVehicleHover();
+		dashboardPage.addNewVehicleFromSaved();
+	}
+
+	@Step
+	public void pressSelectButtonFromSaved() {
+		// TODO Auto-generated method stub
+		dashboardPage.pressSelectButtonFromSaved();
+
+	}
+
+	@Step
+	public void selectCategory(String category) {
+		// TODO Auto-generated method stub
+		dashboardPage.selectCategory(category);
+	}
+
+	@Step
+	public void verifyTechSpecs() {
+		// TODO Auto-generated method stub
+		dashboardPage.verifyTechSpecs();
+	}
+
+	@Step
+	public void selectPencilIconForDefaultVehicle() {
+		// TODO Auto-generated method stub
+		dashboardPage.selectPencilIconForDefaultVehicle();
+	}
+
+	public void renameVehiclePencilIcon() {
+		// TODO Auto-generated method stub
+		dashboardPage.renameVehiclePencilIcon();
 	}
 
 }
